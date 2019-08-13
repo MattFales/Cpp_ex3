@@ -1,0 +1,95 @@
+#!/bin/bash
+
+
+
+
+echo "
+===============TESTER=======================
+Choice
+1| Test with valid cases  are in file named: v1
+2| Test with invalid cases are in file named: in1
+3| Test with mixed cases
+4| Test with random cases
+5| Test another file
+-----------------------------------------
+This program will also make clean and make the file when ran.
+"
+
+
+
+read -p "Enter number of you choice: " number
+
+if [ -f newfile ];
+then
+rm newfile
+fi
+
+if [ $number == "1" ];
+then
+
+eval 'make clean'
+eval 'make'
+eval './ts v1' >> newfile
+echo "================PERL script running check============="
+eval './perldata'
+echo "================PYTHON3 script running check============="
+eval './snake'
+fi
+
+if [ $number == "2" ];
+then
+eval 'make clean'
+eval 'make'
+eval './ts in1' >> newfile
+echo "================PERL script running check============="
+eval './perldata'
+echo "================PYTHON3 script running check============="
+eval './snake'
+fi
+
+if [ $number == "3" ];
+then
+eval 'make clean'
+eval 'make'
+eval './ts mix' >> newfile
+echo "================PERL script running check============="
+eval './perldata'
+echo "================PYTHON3 script running check============="
+eval './snake'
+fi
+
+if [ $number == "4" ];
+then
+eval 'make clean'
+eval 'make'
+eval './tc1'  #this makes random file
+eval './ts randomtest' >> newfile
+echo "================PERL script running check============="
+eval './perldata'
+echo "================PYTHON3 script running check============="
+eval './snake'
+fi
+
+
+if [ $number == "5" ];
+then
+read -p "Name of file you want to test: " other
+eval 'make clean'
+eval 'make'
+eval './tc1'  #this makes random file
+eval './ts $other' >> newfile
+echo "================PERL script running check============="
+eval './perldata'
+echo "================PYTHON3 script running check============="
+eval './snake'
+fi
+
+
+
+#eval './tc1' 
+
+
+
+#eval './perldata'
+
+

@@ -1,0 +1,37 @@
+#! /usr/bin/python3
+
+import os
+
+filepath = 'newfile'
+count  =0
+count1 =0
+count2 =0
+count3 =0
+time =0
+f = open('newfile')
+for line in f:
+	count3+=1
+	if "Line" in line:
+		count+=1
+	if "Valid" in line:
+		count1+=1
+	if "Invalid" in line:
+		count2+=1
+	if "Time" in line:
+		time =line
+
+time = time[5:].lstrip()
+f.close()
+
+print("Lines in the test file:",count)
+print("Total Valid Cases",count1)
+print("Total Invalid Cases:",count2)
+print("Total Line from file called newfile:",count3)
+print("Total Time:",time.rstrip())
+
+
+
+
+
+
+

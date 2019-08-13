@@ -1,0 +1,97 @@
+#!/bin/bash
+
+
+arr[0]="("
+arr[1]="{"
+arr[2]="["
+arr[3]=")"
+arr[4]="}"
+arr[5]="]"
+arr[6]="()"
+arr[7]="{}"
+arr[8]="[]"
+arr[9]="(())"
+arr[10]="{{}}"
+arr[11]="[[]]"
+
+
+
+arr1[0]="2"
+arr1[1]="4"
+arr1[2]="6"
+arr1[3]="8"
+arr1[4]="10"
+arr1[5]="12"
+arr1[6]="14"
+arr1[7]="16"
+arr1[8]="18"
+arr1[9]="20"
+arr1[10]="22"
+arr1[11]="24"
+arr1[12]="26"
+arr1[13]="28"
+arr1[14]="30"
+arr1[15]="32"
+
+
+
+
+
+
+if [ -f randomtest ];
+then
+rm randomtest
+fi
+
+
+
+rand1=$[ $RANDOM % 15 ]
+test=${arr1[$rand1]}
+
+rand2=$[ $RANDOM % 15 ]
+ch=${arr1[$rand2]}
+
+
+rand3=$[ $RANDOM % 15 ]
+ch1=${arr1[$rand3]}
+
+
+rand4=$[ $RANDOM % 15 ]
+ch2=${arr1[$rand4]}
+
+rand5=$[ $RANDOM % 15 ]
+ch3=${arr1[$rand5]}
+
+
+for i in $(seq 1 $test)
+do
+	for i in $(seq 1 $ch)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]}  >> randomtest
+	done
+echo "" >> randomtest
+	for j in $(seq 1 $ch1)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest	
+	for k in $(seq 1 $ch2)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest
+	for l in $(seq 1 $ch3)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest
+
+		
+done
+
+
+

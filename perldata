@@ -1,0 +1,48 @@
+#! /usr/bin/perl -w
+use 5.16.1;
+
+
+
+
+
+my $file = 'newfile';
+open my $info, $file or die "Can Not open $file: $!";
+my $count =0;
+my $time =0;
+my $inorva=0;
+my $inorva1=0;
+my $iv ="valid";
+my $iv1= "invalid";
+while( my $line = <$info>) {
+#print $line;
+#print "hi /n"
+#last if $. == 2;
+#print $line;
+	if ($line =~ /Line/) {
+		$count++;
+	}
+	if ($line =~ /Time/) {
+	   $time = substr($line, 6, 8);
+	   chomp($time);
+	}
+	if ($line =~ /Valid/) {
+	   $inorva++;
+	   $iv="valid";
+	}
+	if ($line =~ /Invalid/) {
+	   $inorva1++;
+	   $iv1="invalid";
+	}
+
+
+
+}
+
+close $info;
+
+
+print "Count of total test ran: $count\n";
+print "Total time took to run all tests: $time\n";
+print "Total number $iv cases: $inorva\n";
+print "Total number $iv1 cases: $inorva1\n";
+print "Expected $iv and $iv1 cases is: $count\n";

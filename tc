@@ -1,0 +1,73 @@
+#!/bin/bash
+
+
+arr[0]="("
+arr[1]="{"
+arr[2]="["
+arr[3]=")"
+arr[4]="}"
+arr[5]="]"
+arr[6]="()"
+arr[7]="{}"
+arr[8]="[]"
+arr[9]="(())"
+arr[10]="{{}}"
+arr[11]="[[]]"
+
+
+
+
+if [ -f randomtest ];
+then
+rm randomtest
+fi
+
+
+echo "
+===============Test creator=================
+This will create random tests that can be used to to test this c++ program
+You will have 4 different count to put in for characters per line
+Each time it is ran it will remove randomtest if found please move this file if you want to save it
+==================================================
+if you choose tests at 1 you will have  4X1=4 
+if you choose 2 it will be 2x4=8 and so on
+
+"
+read -p "How many test do you want: " test
+read -p "How many characters perline you want 1: " ch
+read -p "How many characters perline you want 2: " ch1
+read -p "How many characters perline you want 3: " ch2
+read -p "How many characters perline you want 4: " ch2
+
+for i in $(seq 1 $test)
+do
+	for i in $(seq 1 $ch)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]}  >> randomtest
+	done
+echo "" >> randomtest
+	for j in $(seq 1 $ch1)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest	
+	for k in $(seq 1 $ch2)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest
+	for l in $(seq 1 $ch3)
+	do
+		rand=$[ $RANDOM % 12 ]
+		echo -n ${arr[$rand]} >> randomtest
+	done
+echo "" >> randomtest
+
+		
+done
+
+
+
